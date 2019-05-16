@@ -132,18 +132,18 @@ const color = ['white', 'red', 'black']
 function renderBoard(){
     $("#board").html(columnDivs())
     $('#turnCircle').css('background', color[player])
-    
-    gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
 
-    const columns = document.querySelectorAll('.column')
-   
+    gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
+    
+    const columns = $(".column")
+    
     for (let i = 0; i < columns.length; i++) {
         let column = columns[i]
         let boardColumn = board[i]
         let piecesHTML = renderColumn(boardColumn)
         column.innerHTML = piecesHTML
         if (boardColumn.length < 6 && !gameOver){
-            column.addEventListener('click', () => addToColumn(i, player))
+            column.addEventListener('click', () => addToColumn(i))
         }   
     }
 }
@@ -163,7 +163,7 @@ function renderColumn (array){
     return htmlString
 }
 
-function addToColumn(colNum, player){
+function addToColumn(colNum){
     board[colNum].push(player)
     let rowNum = board[colNum].length - 1
     gameOver = checkBoard(board, rowNum, colNum, player)

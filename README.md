@@ -1,12 +1,14 @@
 ![screenshot](./photos/splash-image.png)
 
-This is a Connect Four game built with Vanilla JavaScript, jQuery, and Browserify. Two players will be able to use this game.
+This is a Connect Four game built with Vanilla JavaScript, HTML, CSS, jQuery, and Browserify. Two players will be able to use this game.
 
-A version of this game built in React. You can find it [here](https://github.com/Brandoncyu/connect4-vanilla)
+A version of this game built in React. You can find it [here](https://github.com/Brandoncyu/connect4-react).
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The game is complete, so all you will need to do is click the "index.html" file to open up the game. 
+
+If you would like to get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
@@ -19,13 +21,19 @@ What things you need to install the software and how to install them
 Install the Node dependencies:
 
 ```shell
-* run npm install
+run npm install
 ```
 
-Start the react development server:
+Run browserify to compile your code into a bundle
 
 ```shell
-* npm start
+run npm build
+```
+
+Run Watchify and Live-Server simultaneously using the npm command below. Whenever you make an edit to your scripts, Watchify will re-compile your bundle with your new code. Live-Server will refresh your browser and fetches your new HTML, CSS and JavaScript files.
+
+```shell
+run npm dev
 ```
 
 ## Key Features
