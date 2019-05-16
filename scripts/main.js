@@ -1,14 +1,19 @@
 const columnDivs = require('./templates/columnDivs')
 const gridTemplate = require('./templates/gridTemplate')
+const checkBoard = require('./algorithms/checkBoard')
 
 let board = [[], [], [], [], [], [], []]
 let player= 1
 let gameOver= false
+const color = ['white', 'red', 'black']
 
 function renderBoard(){
     $("#board").html(columnDivs())
+    $('#turnCircle').css('background', color[player])
     
-    let columns = document.querySelectorAll('.column')
+    gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
+
+    const columns = document.querySelectorAll('.column')
    
     for (let i = 0; i < columns.length; i++) {
         let column = columns[i]
@@ -16,19 +21,15 @@ function renderBoard(){
         let piecesHTML = renderColumn(boardColumn)
         column.innerHTML = piecesHTML
         if (boardColumn.length < 6 && !gameOver){
-            
             column.addEventListener('click', () => addToColumn(i, player))
-        }
-        
+        }   
     }
 }
-
-
 
 function renderColumn (array){
     let columnArray = [...array]
     let htmlString = ``
-    let color = ['white', 'red', 'black']
+    
     while (columnArray.length < 6){
         columnArray.push(0)
     }
@@ -40,18 +41,23 @@ function renderColumn (array){
     return htmlString
 }
 
-function addToColumn(number, player){
-    board[number] = [...board[number], player]
-    toggleUser()
+function addToColumn(colNum, player){
+    board[colNum].push(player)
+    let rowNum = board[colNum].length - 1
+    gameOver = checkBoard(board, rowNum, colNum, player)
+    if (!gameOver) toggleUser()
     renderBoard()
 }
 
 function toggleUser(){
     player = (player % 2) + 1
-    color = ['red', 'black']
-    turnColor = color[player - 1]
-    $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
-    $('#turnCircle').css('background', turnColor)
 }
 
 renderBoard()
+
+$('#reset').click(()=>{
+    board = [[], [], [], [], [], [], []]
+    player = 1
+    gameOver = false
+    renderBoard()
+})
