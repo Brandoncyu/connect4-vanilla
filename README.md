@@ -1,6 +1,8 @@
 ![screenshot](./photos/splash-image.png)
 
-This is a Connect Four game built with Vanilla JavaScript, Browserify, HTML, CSS, and jQuery. Two players will be able to use this game.
+This is a Connect Four game built with Vanilla JavaScript, jQuery, and Browserify. Two players will be able to use this game.
+
+A version of this game built in React. You can find it [here](https://github.com/Brandoncyu/connect4-vanilla)
 
 ## Getting Started
 
