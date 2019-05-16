@@ -9,7 +9,7 @@ const color = ['white', 'red', 'black']
 
 function renderBoard(){
     $("#board").html(columnDivs())
-    $('#turnCircle').css('background', color[player])
+    $('#turnSquare').css('background', color[player])
 
     gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
     
