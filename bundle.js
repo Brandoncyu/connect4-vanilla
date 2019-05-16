@@ -4,7 +4,7 @@ const { consecutiveLeft, consecutiveRight, consecutiveLeftDown, consecutiveRight
 checkBoard = (board, lastRow, lastColumn, player) => {
     //These functions check if the consecutive pieces horizontally, vertically, or diagonally are equal to the new piece. The functions should return a value. If any of the new combined variables are 3 or greater, then we have a connection of four consecutive pieces. This function will then return "true" 
 
-    //The only exception is verticalCheck, which does not require combining a check in a different direction, so the logic is inheret to its function. It should only return "true" or "false"
+    //The only exception is verticalCheck, which does not require combining a check in a different direction, so the logic is inherent to its function. It should only return "true" or "false"
     const verticalCheck = consecutiveDown(board, lastRow, lastColumn, player)
 
     const horizontalCheck = consecutiveLeft(board, lastRow, lastColumn, player) + consecutiveRight(board, lastRow, lastColumn, player)
@@ -24,7 +24,7 @@ function consecutiveLeft(array, row, column, player, count = 0) {
     //this decreases the column count, so that we keep checking the same row of to the left column until there are no more columns, or if there is a value in the array that does not equal the player's value. 
     column--
     let arrayCol = array[column]
-    //This is to make sure the column does not go to -1. If it does, "arrayCol" will return "undefined," and the  will return and the function returns the count
+    //This is to make sure the column does not go to -1. If it does, "arrayCol" will return "undefined," and will return and the function returns the count
     if (arrayCol === undefined) return count
 
     let arrayValue = arrayCol[row]
@@ -40,7 +40,7 @@ function consecutiveLeft(array, row, column, player, count = 0) {
 }
 
 function consecutiveRight(array, row, column, player, count = 0) {
-    //Similar in prinicple to the funciton above, this function INCREASES the column value to look at the columns RIGHT of the last piece. The recursive statement will stop when a consecutive value does not equal the original player's value. It will return the count of number of consecutive pieces to the right that equal the original player's value.
+    //Similar in principle to the function above, this function INCREASES the column value to look at the columns RIGHT of the last piece. The recursive statement will stop when a consecutive value does not equal the original player's value. It will return the count of number of consecutive pieces to the right that equal the original player's value.
     column++
     let arrayCol = array[column]
     if (arrayCol === undefined) return count
