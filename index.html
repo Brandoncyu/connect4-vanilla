@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
         integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="./scripts/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer="defer" src="bundle.js" charset="utf-8"></script>
+    
     <title>Connect Four!</title>
 </head>
 <body>
@@ -14,26 +17,15 @@
         <h1 id="title">Connect Four!</h1>
         <div class="row">
             <div class="col-lg-9">
-                <div class="row board">
-                    <div class="col column" id="0">
-                        <div class="row">
-                            <div id="square" class="square">
-                                <div class="grid-circle" style="background: white"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col column" id="1"></div>
-                    <div class="col column" id="2"></div>
-                    <div class="col column" id="3"></div>
-                    <div class="col column" id="4"></div>
-                    <div class="col column" id="5"></div>
-                    <div class="col column" id="6"></div>
+                <div class="row" id="board">
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="status">
-                    <h3>Player 1's turn</h3>
-                    <div class="turnCircle" style="background: red"></div>
+                    <div id="turn">
+                        <h3>Player 1's turn</h3>
+                    </div>
+                    <div id="turnCircle" style="background: red"></div>
                     <button type="button" class="btn btn-primary btn-lg">Reset Game!</button>
                 </div>
             </div>

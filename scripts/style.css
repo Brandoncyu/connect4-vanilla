@@ -47,7 +47,7 @@ body {
 }
 
 
-.turnCircle {
+#turnCircle {
   margin-left: auto;
   margin-right: auto;
   height: 50px;
