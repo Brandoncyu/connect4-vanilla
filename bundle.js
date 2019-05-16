@@ -120,13 +120,16 @@ function consecutiveDown(array, row, column, player, count = 0) {
 
 module.exports = { consecutiveLeft, consecutiveRight, consecutiveLeftDown, consecutiveRightUp, consecutiveRightDown, consecutiveLeftUp, consecutiveDown }
 },{}],3:[function(require,module,exports){
+//Browserify allows you to import script files and compiles it automatically, as you can see below. This way, you can separate your code files in an organized fashion.
 const columnDivs = require('./templates/columnDivs')
 const gridTemplate = require('./templates/gridTemplate')
 const checkBoard = require('./algorithms/checkBoard')
 
+//Like my react app, we will have three main variables for this game; the board, the player value, and whether the game is over. These three values will be manipulated to keep track of the game.
 let board = [[], [], [], [], [], [], []]
-let player= 1
-let gameOver= false
+let player = 1
+let gameOver = false
+//This color value below will be used to render the color pieces as well as the turn value
 const color = ['white', 'red', 'black']
 
 function renderBoard(){
