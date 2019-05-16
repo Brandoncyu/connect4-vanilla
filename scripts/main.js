@@ -7,6 +7,15 @@ let player = 1
 let gameOver = false
 const color = ['white', 'red', 'black']
 
+renderBoard()
+
+$('#reset').click(() => {
+    board = [[], [], [], [], [], [], []]
+    player = 1
+    gameOver = false
+    renderBoard()
+})
+
 function renderBoard(){
     $("#board").html(columnDivs())
     $('#turnSquare').css('background', color[player])
@@ -53,11 +62,3 @@ function toggleUser(){
     player = (player % 2) + 1
 }
 
-renderBoard()
-
-$('#reset').click(()=>{
-    board = [[], [], [], [], [], [], []]
-    player = 1
-    gameOver = false
-    renderBoard()
-})
