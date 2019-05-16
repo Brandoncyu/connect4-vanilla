@@ -132,10 +132,26 @@ let gameOver = false
 //This color value below will be used to render the color pieces as well as the turn value
 const color = ['white', 'red', 'black']
 
+//This is the function that renders all the columns in the board and has all the functions that will change Big Three values from lines 7-9.
+renderBoard()
+
+//This adds an event-listener to the reset button. It will also call upon the renderBoard function.
+$('#reset').click(() => {
+    board = [[], [], [], [], [], [], []]
+    player = 1
+    gameOver = false
+    renderBoard()
+})
+
+
 function renderBoard(){
+    //This finds the div with the id of Board and adds seven divs with the class of "columns." Obviously these will represent the seven columns of the board.
     $("#board").html(columnDivs())
+
+    //This color square in the status bar. It will toggle according to the player.
     $('#turnSquare').css('background', color[player])
 
+    //If the game is over, this will say that the player has won.
     gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
     
     const columns = $(".column")
@@ -178,14 +194,7 @@ function toggleUser(){
     player = (player % 2) + 1
 }
 
-renderBoard()
 
-$('#reset').click(()=>{
-    board = [[], [], [], [], [], [], []]
-    player = 1
-    gameOver = false
-    renderBoard()
-})
 },{"./algorithms/checkBoard":1,"./templates/columnDivs":4,"./templates/gridTemplate":5}],4:[function(require,module,exports){
 const columnDivs = () => {
     return `<div class="col column">
