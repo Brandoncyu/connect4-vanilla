@@ -127,6 +127,8 @@ const checkBoard = require('./algorithms/checkBoard')
 let board = [[], [], [], [], [], [], []]
 let player = 1
 let gameOver = false
+let gameStart = true
+let computerPlayer = true
 const color = ['white', 'red', 'black']
 
 renderBoard()
@@ -135,6 +137,8 @@ $('#reset').click(() => {
     board = [[], [], [], [], [], [], []]
     player = 1
     gameOver = false
+    gameStart = true
+    computerPlayer = false
     renderBoard()
 })
 
@@ -145,16 +149,27 @@ function renderBoard(){
     gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
     
     const columns = $(".column")
+    if (computerPlayer && player === 2){
+        let random = Math.random() * 7
+        let column = Math.floor(random)
 
-    for (let i = 0; i < columns.length; i++) {
-        let column = columns[i]
-        let boardColumn = board[i]
-        let piecesHTML = renderColumn(boardColumn)
-        column.innerHTML = piecesHTML
-        if (boardColumn.length < 6 && !gameOver){
-            column.addEventListener('click', () => addToColumn(i))
-        }   
+        while (board[column].length === 6) {
+            random = Math.random() * 7
+            column = Math.floor(random)
+        }
+        addToColumn(column)
+    } else{
+        for (let i = 0; i < columns.length; i++) {
+            let column = columns[i]
+            let boardColumn = board[i]
+            let piecesHTML = renderColumn(boardColumn)
+            column.innerHTML = piecesHTML
+            if (boardColumn.length < 6 && !gameOver) {
+                column.addEventListener('click', () => addToColumn(i))
+            }
+        }
     }
+    
 }
 
 function renderColumn (array){
@@ -176,7 +191,11 @@ function addToColumn(colNum){
     board[colNum].push(player)
     let rowNum = board[colNum].length - 1
     gameOver = checkBoard(board, rowNum, colNum, player)
-    if (!gameOver) toggleUser()
+    if (!gameOver) {
+        toggleUser()
+    } else{
+        computerPlayer = false
+    }
     renderBoard()
 }
 
