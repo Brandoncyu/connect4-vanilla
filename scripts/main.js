@@ -27,27 +27,16 @@ function renderBoard(){
     gameOver ? $('#turn').html(`<h1 id="winner">Player ${player} wins!</h1>`) : $('#turn').html(`<h3>Player ${player}'s turn</h3>`)
     
     const columns = $(".column")
-    if (computerPlayer && player === 2){
-        let random = Math.random() * 7
-        let column = Math.floor(random)
-
-        while (board[column].length === 6) {
-            random = Math.random() * 7
-            column = Math.floor(random)
-        }
-        addToColumn(column)
-    } else{
-        for (let i = 0; i < columns.length; i++) {
-            let column = columns[i]
-            let boardColumn = board[i]
-            let piecesHTML = renderColumn(boardColumn)
-            column.innerHTML = piecesHTML
-            if (boardColumn.length < 6 && !gameOver) {
-                column.addEventListener('click', () => addToColumn(i))
-            }
+    for (let i = 0; i < columns.length; i++) {
+        let column = columns[i]
+        let boardColumn = board[i]
+        let piecesHTML = renderColumn(boardColumn)
+        column.innerHTML = piecesHTML
+        if (boardColumn.length < 6 && !gameOver) {
+            column.addEventListener('click', () => addToColumn(i))
         }
     }
-    
+
 }
 
 function renderColumn (array){
@@ -79,5 +68,16 @@ function addToColumn(colNum){
 
 function toggleUser(){
     player = (player % 2) + 1
+
+    if (computerPlayer && player === 2) {
+        let random = Math.random() * 7
+        let column = Math.floor(random)
+
+        while (board[column].length === 6) {
+            random = Math.random() * 7
+            column = Math.floor(random)
+        }
+        this.setTimeout(() => addToColumn(column), 1000)
+    } 
 }
 
