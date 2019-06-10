@@ -68,7 +68,6 @@ function renderColumn (array){
     return htmlString
 }
 
-
 function addToColumn(colNum){
     //This player's value to the appropriate place in the board array. We will also get the row number, and use the board, the row number, the column number, and the player number to determine if there is a winner.
     board[colNum].push(player)
