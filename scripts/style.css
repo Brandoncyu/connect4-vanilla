@@ -39,6 +39,20 @@ body {
   padding-bottom: 100%;
 }
 
+.hover-square {
+  position: relative;
+  border: 1px solid #000;
+  width: 100%;
+  background: blue
+}
+
+.hover-square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+
 .grid-circle {
   position: absolute;
   width: 100%;
